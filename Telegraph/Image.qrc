@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>image/ban.png</file>
+        <file>image/ico</file>
+        <file>image/logo.ico</file>
+    </qresource>
+</RCC>
