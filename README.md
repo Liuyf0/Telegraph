@@ -1,6 +1,6 @@
 ### Telegraph
 
-##### Loginthread模块：负责登录业务。
+##### 1. Loginthread模块：负责登录业务。
 
 业务流程：`startConnect` 作为登录触发插槽，启动socket。绑定socket的 `connected`和 `disconnected` 信号，对应处理函数 `socket_Connected`和 `socket_Disconnected`
 
@@ -10,7 +10,7 @@
 
 ![示例图片](runImage/login.png)
 
-##### MainWindow模块：主业务
+##### 2. MainWindow模块：主业务
 
 业务流程：
 
@@ -19,11 +19,8 @@
 
 ![示例图片](runImage/main.png)
 
-##### RegWindow模块：负责注册业务
+##### 3. RegWindow模块：负责注册业务
 
 ![示例图片](runImage/reg.png)
-
-
-
 
 ### Server
