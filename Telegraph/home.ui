@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Home</class>
+ <widget class="QWidget" name="Home">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>980</width>
+    <height>735</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>980</width>
+    <height>735</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>980</width>
+    <height>735</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Telegraph</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>:/image/ico</normaloff>:/image/ico</iconset>
+  </property>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>1</y>
+     <width>281</width>
+     <height>731</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_3">
+    <item>
+     <widget class="QListWidget" name="friendListWidget">
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>64</width>
+        <height>64</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="addPushButton">
+          <property name="text">
+           <string>新建群聊</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Image.qrc">
+            <normaloff>:/image/add.png</normaloff>:/image/add.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="cashPushButton">
+          <property name="text">
+           <string>充值</string>
+          </property>
+          <property name="icon">
+           <iconset resource="Image.qrc">
+            <normaloff>:/image/cash.png</normaloff>:/image/cash.png</iconset>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2">
+        <item>
+         <widget class="QPushButton" name="modifyPushButton">
+          <property name="text">
+           <string>修改资料</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="charaPushButton">
+          <property name="text">
+           <string>个性化</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>10</y>
+     <width>681</width>
+     <height>721</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_4">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QPushButton" name="picPushButton">
+        <property name="text">
+         <string>图片</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="filePushButton">
+        <property name="text">
+         <string>文件</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="expPushButton">
+        <property name="text">
+         <string>表情</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="redPushButton">
+        <property name="text">
+         <string>红包</string>
+        </property>
+        <property name="icon">
+         <iconset resource="Image.qrc">
+          <normaloff>:/image/red.png</normaloff>:/image/red.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="dithPushButton">
+        <property name="text">
+         <string>抖动</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="cleanPushButton">
+        <property name="text">
+         <string>清屏</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="voicePushButton">
+        <property name="text">
+         <string>语音</string>
+        </property>
+        <property name="icon">
+         <iconset resource="Image.qrc">
+          <normaloff>:/image/voice.png</normaloff>:/image/voice.png</iconset>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <spacer name="horizontalSpacer">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QTextEdit" name="textEdit"/>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="sendPushButton">
+          <property name="minimumSize">
+           <size>
+            <width>75</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>45</height>
+           </size>
+          </property>
+          <property name="text">
+           <string>发送</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>70</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="Image.qrc"/>
+ </resources>
+ <connections/>
+</ui>

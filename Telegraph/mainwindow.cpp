@@ -25,7 +25,7 @@ void MainWindow::on_loginPushButton_clicked()
         return;
     }
 
-    this->setEnabled(false);        // 是所有控件失效
+    this->setEnabled(false);        // 使所有控件失效
     ui->progressBar->show();
 
     loginEvent = new LoginThread();
@@ -70,4 +70,10 @@ void MainWindow::loginSuccess(){
 //    home->show();
 //    home->startListen();
     this->hide();
+}
+
+void MainWindow::on_regPushButton_clicked()
+{
+     reg = new RegWindow();
+     reg->show();
 }

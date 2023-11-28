@@ -33,10 +33,10 @@
   </property>
   <property name="windowIcon">
    <iconset resource="Image.qrc">
-    <normaloff>:/image/ico</normaloff>:/image/ico</iconset>
+    <normaloff>:/image/logo.ico</normaloff>:/image/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -109,7 +109,7 @@ background-color: rgb(0, 85, 127);
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>150</x>
@@ -145,7 +145,7 @@ background-color: rgb(0, 85, 127);
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>150</x>

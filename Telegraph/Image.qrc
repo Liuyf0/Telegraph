@@ -1,7 +1,10 @@
 <RCC>
     <qresource prefix="/">
         <file>image/ban.png</file>
-        <file>image/ico</file>
+        <file>image/add.png</file>
+        <file>image/cash.png</file>
+        <file>image/red.png</file>
+        <file>image/voice.png</file>
         <file>image/logo.ico</file>
     </qresource>
 </RCC>

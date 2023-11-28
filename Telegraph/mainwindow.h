@@ -2,14 +2,16 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "ui_mainwindow.h"
-#include "loginthread.h"
 #include <QThread>
 #include <QMessageBox>
 #include <QString>
 #include <QDebug>
 #include <QByteArray>
 #include <QCryptographicHash>
+
+#include "ui_mainwindow.h"
+#include "loginthread.h"
+#include "regwindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,10 +28,13 @@ public:
 private slots:
     void on_loginPushButton_clicked();
 
+    void on_regPushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     QThread *thread;
     LoginThread* loginEvent;
+    RegWindow *reg;
     void loginFailed();
     void loginSuccess();
 
