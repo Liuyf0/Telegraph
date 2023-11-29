@@ -1,5 +1,5 @@
 QT       += core gui websockets
-
+QT       += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -16,19 +16,30 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    home.cpp \
     loginthread.cpp \
     main.cpp \
     mainwindow.cpp \
-    regwindow.cpp
+    message.cpp \
+    messagethread.cpp \
+    regwindow.cpp \
+    useritem.cpp
 
 HEADERS += \
+    home.h \
     loginthread.h \
     mainwindow.h \
-    regwindow.h
+    message.h \
+    messagethread.h \
+    regwindow.h \
+    src/messagethread.h \
+    useritem.h
 
 FORMS += \
+    home.ui \
     mainwindow.ui \
-    regwindow.ui
+    regwindow.ui \
+    useritem.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -15,10 +15,10 @@ void LoginThread::startConnect(){
 
 void LoginThread::socket_Connected(){
 
-//    QString md5;
-//    QByteArray bytePwd = password.toLatin1();
-//    QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
-//    md5.append(bytePwdMd5.toHex());
+    QString md5;
+    QByteArray bytePwd = password.toLatin1();
+    QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
+    md5.append(bytePwdMd5.toHex());
     connect(socket, &QWebSocket::textMessageReceived,
             this, &LoginThread::socket_Read_Data,Qt::DirectConnection);
 
@@ -27,8 +27,7 @@ void LoginThread::socket_Connected(){
     QJsonObject msgData;
     newMessage.insert("action","login");
     msgData.insert("username",username);
-    //msgData.insert("password",md5);
-    msgData.insert("password",password);
+    msgData.insert("password",md5);
     newMessage.insert("data",msgData);
 
     // 将 JSON 对象转换为 JSON 文档

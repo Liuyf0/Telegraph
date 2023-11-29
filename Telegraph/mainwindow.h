@@ -12,6 +12,7 @@
 #include "ui_mainwindow.h"
 #include "loginthread.h"
 #include "regwindow.h"
+#include "home.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -35,6 +36,7 @@ private:
     QThread *thread;
     LoginThread* loginEvent;
     RegWindow *reg;
+    Home *home;
     void loginFailed();
     void loginSuccess();
 

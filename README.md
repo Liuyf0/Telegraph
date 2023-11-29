@@ -1,4 +1,4 @@
-### [Telegraph](runImage/README.md)
+# [Telegraph](runImage/README.md)
 
 ##### 1. Loginthread模块：负责登录业务。
 
@@ -8,7 +8,7 @@
 * `socket_Connected` ：1）开启监听信息接收，绑定 `socket_Read_Data ` 信号；2）发送登录账号密码。
 * `socket_Read_Data` ：登录信息接收处理，对应触发主窗口信号。
 
-##### 2. MainWindow模块：主业务
+##### 2. MainWindow模块：登录主业务
 
 业务流程：
 
@@ -21,9 +21,30 @@
 
 ---
 
+##### 4. Home模块：交互业务
 
+业务流程：
 
-### [Server](runImage/README.md)
+1. 用户上线：根据登录生成的 `token` 授权。线程执行，`messageThread` 事件进行处理验证。
+
+##### 5. MessageThread模块：（用户信息业务）？
+
+* `MessageThread` ：`socket`连接并设置连接与断开处理。
+* `socket_Connected`：设置开启监听 `socket`接收文本与二进制数据的处理，发送 `action：auth` 消息，用户上线。
+* `Receive` ：根据接收到消息的 `action：`执行不同的操作，`updateList`更新列表。。。。。。。。。。。。。。。。。。。。。。。。。。。
+
+##### 6. UserItem模块：用户列表业务
+
+* `unread` ：记录未读用户消息。
+* `readAll` ：已读所有消息。
+
+---
+
+---
+
+---
+
+# [Server](runImage/README.md)
 
 ##### 1. MainWindos模块：主业务
 
@@ -40,7 +61,7 @@
   * **状态更新：** 函数末尾将 `wiiRepaly` 设置为 1，表示已发送回复。
 * `handleReq`
   * **JSON解析：** 使用 `QJsonDocument::fromJson`将收到的字符串数据解析为JSON文档。
-  * **处理操作：** 根据JSON文档中的 "action" 值执行相应的操作，比如注册新用户 (`registerNewUser`)、登录 (`Login`)、认证 (`addNewUser`)、发送文本消息 (`sendMsg`) 等。
+  * **处理操作：** 根据JSON文档中的 "action" 值执行相应的操作，比如注册新用户 (`registerNewUser`)、登录 (`Login`)、认证 (`addNewUser`)、发送文本消息 (`sendMsg`) 等。。。。。。。。。。。
   * **错误处理：** 如果解析失败或存在错误，设置 `errorMsg` 以指示无法解析请求。
 
 ##### 2. user模块：

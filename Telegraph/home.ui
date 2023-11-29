@@ -32,8 +32,8 @@
    <string>Telegraph</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>:/image/ico</normaloff>:/image/ico</iconset>
+   <iconset resource="Image.qrc">
+    <normaloff>:/image/logo.ico</normaloff>:/image/logo.ico</iconset>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">

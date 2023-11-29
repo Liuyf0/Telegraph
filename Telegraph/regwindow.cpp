@@ -67,10 +67,10 @@ void RegWindow::socket_Connected(){
     QString sex = ui->sexcCmboBox->currentText();
     QString email = ui->emailLineEdit->text();
 
-//    QString md5;
-//    QByteArray bytePwd = password.toLatin1();
-//    QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
-//    md5.append(bytePwdMd5.toHex());
+    QString md5;
+    QByteArray bytePwd = password.toLatin1();
+    QByteArray bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
+    md5.append(bytePwdMd5.toHex());
 
     connect(socket, &QWebSocket::textMessageReceived,
                 this, &RegWindow::socket_Read_Data);
@@ -80,7 +80,7 @@ void RegWindow::socket_Connected(){
     QJsonObject msgData;
     newMessage.insert("action","register");
     msgData.insert("username",username);
-    msgData.insert("password",password); // msgData.insert("password",md5);
+    msgData.insert("password",md5); // msgData.insert("password",md5);
     msgData.insert("sex",sex);
     msgData.insert("email",email);
     newMessage.insert("data",msgData);

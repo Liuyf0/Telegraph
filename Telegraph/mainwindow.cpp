@@ -64,11 +64,11 @@ void MainWindow::loginSuccess(){
     bytePwdMd5 = QCryptographicHash::hash(bytePwd, QCryptographicHash::Md5);
     token = bytePwdMd5.toHex();
 
-//    home = new Home;
-//    home->Token = token;
-//    home->userName = ui->userLineEdit->text();
-//    home->show();
-//    home->startListen();
+    home = new Home;
+    home->Token = token;
+    home->userName = ui->userLineEdit->text();
+    home->show();
+    home->startListen();
     this->hide();
 }
 
