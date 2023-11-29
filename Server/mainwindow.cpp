@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 void MainWindow::server_New_Connect(){
-    QWebSocket* socketCon = server->nextPendingConnection();
+    QWebSocket* socketCon = server->nextPendingConnection();        // accept
     connect(socketCon, &QWebSocket::textMessageReceived, this, &MainWindow::socket_Read_Data);
     connect(socketCon, &QWebSocket::binaryMessageReceived, this, &MainWindow::socket_Read_File);
     connect(socketCon, &QWebSocket::disconnected, this, &MainWindow::socket_Disconnected);
@@ -76,35 +76,54 @@ void MainWindow::socket_Read_File(QByteArray message){
 
 void MainWindow::socket_Read_Data(QString message)
 {
+    // 获取发出信号的 WebSocket 客户端
     QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
-    if(!message.isEmpty())
+
+    // 检查接收到的消息是否非空
+    if (!message.isEmpty())
     {
-        if(message.length()<=5000){
+        // 如果消息长度小于或等于 5000 字符，记录消息
+        if (message.length() <= 5000)
+        {
             Log(message);
         }
 
-        handleReq(message,pClient);
-
+        // 处理接收到的消息
+        handleReq(message, pClient);
     }
+
+    // 准备一个响应消息
     QJsonObject newMessage;
-    if(!errorMsg.isEmpty()){
-        newMessage.insert("error",1);
-        newMessage.insert("msg",errorMsg);
-        errorMsg="";
-    }else{
-        newMessage.insert("error",0);
-    }
-    if(wiiRepaly == 0){
 
-    }else{
+    // 检查是否有错误消息需要包含在响应中
+    if (!errorMsg.isEmpty())
+    {
+        newMessage.insert("error", 1);
+        newMessage.insert("msg", errorMsg);
+        errorMsg = "";
+    }
+    else
+    {
+        newMessage.insert("error", 0);
+    }
+
+    // 检查是否有要发送的回复（wiiRepaly == 0 表示不发送回复）
+    if (wiiRepaly == 0)
+    {
+        // 不发送回复
+    }
+    else
+    {
+        // 准备并发送一个 JSON 格式的响应给客户端
         QJsonDocument document;
         document.setObject(newMessage);
         QByteArray byteArray = document.toJson(QJsonDocument::Compact);
         QString strJson(byteArray);
         pClient->sendTextMessage(strJson.toUtf8());
     }
-    wiiRepaly=1;
 
+    // 将 wiiRepaly 设置为 1，表示已发送回复
+    wiiRepaly = 1;
 }
 
 void MainWindow::handleReq(QString data,QWebSocket *pClient){
@@ -118,8 +137,10 @@ void MainWindow::handleReq(QString data,QWebSocket *pClient){
                 QJsonObject obj = object.value("data").toObject();
                 if(value.toString()=="register"){
                     registerNewUser(obj);
+                    wiiRepaly=1;
                 }else if(value.toString()=="login"){
                     Login(obj);
+                    wiiRepaly=1;
                 }else if(value.toString()=="auth"){
                     addNewUser(obj,pClient);
                     wiiRepaly=0;
@@ -165,8 +186,6 @@ void MainWindow::handleReq(QString data,QWebSocket *pClient){
                     sendSpeak(obj);
                     wiiRepaly=0;
                 }
-
-
             }
         }
     }else{
@@ -346,7 +365,7 @@ void MainWindow::Login(QJsonObject userData){
     if(!newUser.Login()){
         errorMsg = newUser.errMsg;
     }else{
-         Log("User"+userData.value("username").toString() +" Log in.");
+         Log("User："+userData.value("username").toString() +" Log in.");
     }
 }
 
@@ -376,22 +395,27 @@ void MainWindow::addNewUser(QJsonObject userData,QWebSocket* pClient){
 
 void MainWindow::socket_Disconnected()
 {
+    // 从连接断开的客户端中获取用户名
     QString logOffUser;
     QWebSocket *pClient = qobject_cast<QWebSocket *>(sender());
-    QHash<QString, User>::const_iterator i;
-    for(i=onlineList.constBegin(); i!=onlineList.constEnd(); ++i){
-        if(i.value().socket == pClient){
-            logOffUser = i.key();
+    // 遍历在线用户列表查找与断开连接的客户端匹配的用户名
+    for (const auto &user : onlineList) {
+        if (user.socket == pClient) {
+            logOffUser = user.userName;
             break;
         }
     }
+    // 记录断开连接的事件
     Log("Disconnected!");
+    // 如果找到了匹配的用户名
     if(!logOffUser.isEmpty()){
+        // 从在线用户列表中移除断开连接的用户
         onlineList.remove(logOffUser);
-        Log("User "+logOffUser+" Log off!");
-        QHash<QString, User>::const_iterator i2;
-        for(i2=onlineList.constBegin(); i2!=onlineList.constEnd(); ++i2){
-            onlineList[i2.value().userName].sendBroadcast(0,logOffUser);
+        // 记录用户下线事件
+        Log("User " + logOffUser + " Log off!");
+        // 向其他在线用户广播当前用户下线的消息
+        for (const auto &user : onlineList) {
+            onlineList[user.userName].sendBroadcast(0, logOffUser);
         }
     }
 }

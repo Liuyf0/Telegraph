@@ -29,9 +29,11 @@ void User::setUserInfo(QString username, QString password, QString sex, QString 
 
 int User::Login(){
         QSqlQuery query(*db);
-        query.exec( "select * from users where `username`='"+userName+"' ");
+        query.exec( "select * from users where `username`='"+userName+"'");
         if(query.next()){
+            // 获取密码字段的索引
             int fieldNo = query.record().indexOf("password");
+            // 从数据库中获取存储的密码
             QString pwd = query.value(fieldNo).toString();
             if(pwd == passWord){
                 return 1;
